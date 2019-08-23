@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">	  
+<head>
+<title>Veiculo</title>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+</head>
+<body>
+	<h1 align="center">Cadastro Veiculos</h1>
+	
+	<form id="formVericulo" class="container" method="post" >	
+		Placa:<input id="placa" type="text" value="" name="placa" />
+		<div class="row">
+			<div class="input-field col s6">
+				Renavam:<input id="renavam" type="text" value="" name="renavam" />
+			</div>
+			<div class="input-field col s6"> 		
+				Valor:<input  id="valor" type="text" value=""	name="valor_venda" />
+			</div>
+			<div class="input-field col s12">			
+    		<select name="SelectModelo">
+	    		<option value="" disabled selected>Selecione o modelo</option>    		
+	    		<option th:each="modelo : ${modelos}" th:value="${modelo.id}" th:text="${modelo.descricao}"></option>      			
+      		</select>   
+  		</div>	
+		</div>	
+		<th:block th:include="mensagemValidacao"></th:block>
+		<div align="right">
+			<a href="/veiculos" class="waves-effect waves-light btn"><i class="material-icons left"></i>Cancelar</a>	
+			<button class="waves-effect waves-light btn" type="submit">Salvar</button>					
+		</div>
+	</form>       		
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script><style type="text/css"></style>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){	
+$(document).ready(function() {
+    $('select').material_select();  
+    $("#valor").mask("999.999.990,00", {reverse: true});
+    $("#renavam").mask("00000000000");	
+	$("#placa").mask("AAA-0000", {translation: {'A': {pattern: /[a-zA-Z]/}}});		  
+});
+}//]]> 
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+</html>

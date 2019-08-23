@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>CRUD Veiculos</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" /> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<h1 align="center">Lista de Veiculos</h1>	
+    <table  class="container">
+		<thead>
+			<tr>
+			    <th>Modelo</th>			    
+				<th>Placa</th>
+				<th>Renavam</th>
+				<th>Data Cadastro</th>
+				<th>valor de venda</th>				
+				<th>Deletar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="veiculo : ${veiculos}">			    			    	
+				<td><a th:href="${(#mvc.url('VC#opcionaisVeiculo').arg(0, veiculo.id)).build()}"><span th:text="${veiculo.modelo.getDescricao()}"></span></a></td>
+				<td><span th:text="${veiculo.placa}"></span></td>
+				<td><span th:text="${veiculo.renavam}"></span></td>
+				<td><span th:text="${veiculo.data_cadastro}"></span></td>
+				<td><span th:text="${veiculo.valor_venda}"></span></td>
+				<td><a class="btn-floating btn-small waves-effect waves-light" th:href="${(#mvc.url('VC#deletarVeiculo').arg(0, veiculo.id)).build()}"><i class="material-icons left">delete_forever</i></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="container" align="right">	
+		<h1>
+		    <a href="/modelos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Modelos</a>
+			<a href="/opcionais" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Opcionais</a>
+    		<a href="/CadastrarVeiculo" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Veiculo</a>
+    	</h1>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

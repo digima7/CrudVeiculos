@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>CRUD Veiculos</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<h1 align="center">Cadastro de Modelos</h1>
+	
+	<form method="post"  class="container">
+		Descricao:<input type="text" value="" name="descricao" />
+		<th:block th:include="mensagemValidacao"></th:block>
+		<div align="right">		 
+    		<a href="/veiculos" class="waves-effect waves-light btn"><i class="material-icons left"></i>Voltar</a>    	
+    		<button class="waves-effect waves-light btn" type="submit">Salvar</button>		 	
+    	</div>
+    	
+    </form>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script><style type="text/css"></style>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+$(document).ready(function() {
+    $('select').material_select();
+});
+}//]]> 
+
+</script>
+</html>

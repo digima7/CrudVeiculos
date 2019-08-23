@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>CRUD Veiculos</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+	<h1 align="center">Lista Opcionais do veiculo</h1>
+	
+	<form method="post"  class="container">
+		<div class="input-field col s12">			
+    		<select name="SelectOpcional">
+    			<option value="" disabled selected>Selecione os opcionais</option>    		
+    			<option th:each="opcional : ${opcionais}" th:value="${opcional.id}" th:text="${opcional.descricao}"></option>      			
+      		</select>      		      		    
+  		</div>	
+  		<div align="right">		 
+    		<button class="waves-effect waves-light btn" type="submit">Adicionar a lista</button> 		    	
+    	</div>
+	</form>
+	
+	<div class="container">
+		<table>
+			<thead>
+				<tr>
+					<th>Descricao</th>	
+                    <th>Excluir</th>			
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="veiculoOp : ${veiculo.opcionais}">									
+					<td><span th:text="${veiculoOp.descricao}"></span></td>
+					<td><a class="btn-floating btn-small waves-effect waves-light" th:href="${(#mvc.url('VC#deletarOpcional').arg(0, veiculoOp.id )).build()}"><i class="material-icons left">delete_forever</i></a></td>					          
+				</tr>
+			</tbody>
+		</table>	
+					  	  		
+					  	  							 
+		<div align="right">		 
+    		<a href="/veiculos" class="waves-effect waves-light btn"><i class="material-icons left"></i>Voltar</a>    		    	
+    	</div>
+    	</div>    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script><style type="text/css"></style>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+$(document).ready(function() {
+    $('select').material_select();
+});
+}//]]> 
+
+</script>
+</html>
